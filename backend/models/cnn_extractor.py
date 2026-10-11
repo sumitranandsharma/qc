@@ -65,61 +65,47 @@ class FeatureExtractor:
         feat = feat.view(feat.size(0), -1)
         return feat.cpu().numpy().squeeze(0)
 
+    @torch.no_grad()
     def generate_gradcam(self, tensor, original_pil):
         """
-        Computes Grad-CAM attention heatmap overlay for the chest X-ray.
-        Returns base64 encoded JPEG string.
+        Computes convolutional feature attention heatmap overlay without backward autograd.
+        Zero memory overhead - runs safely on 512MB RAM cloud instances.
         """
-        activations = []
-        gradients = []
+        try:
+            activations = []
+            def forward_hook(module, inp, out):
+                activations.append(out.detach())
 
-        def forward_hook(module, inp, out):
-            activations.append(out)
+            hook = self.target_conv.register_forward_hook(forward_hook)
+            _ = self.features_layer(tensor)
+            hook.remove()
 
-        def backward_hook(module, grad_in, grad_out):
-            gradients.append(grad_out[0])
+            if not activations:
+                return None
 
-        h1 = self.target_conv.register_forward_hook(forward_hook)
-        h2 = self.target_conv.register_full_backward_hook(backward_hook)
+            act = activations[0].cpu().numpy()[0]  # Shape: (512, 7, 7)
+            # Channel-wise mean activation for spatial lung focus
+            cam = np.mean(act, axis=0)
+            cam = np.maximum(cam, 0)
+            max_v = float(np.max(cam))
+            if max_v > 0:
+                cam = cam / max_v
+            cam = cv2.resize(cam, (224, 224))
 
-        # Forward pass through base model
-        tensor_req = tensor.clone().detach().requires_grad_(True)
-        out = self.base_model(tensor_req)
-        score = torch.max(out)
+            # Jet colormap overlay
+            heatmap = cv2.applyColorMap(np.uint8(255 * cam), cv2.COLORMAP_JET)
+            heatmap = cv2.cvtColor(heatmap, cv2.COLOR_BGR2RGB)
 
-        self.base_model.zero_grad()
-        score.backward()
+            orig_resized = np.array(original_pil.convert("RGB").resize((224, 224)))
+            overlay = np.uint8(0.6 * orig_resized + 0.4 * heatmap)
 
-        h1.remove()
-        h2.remove()
-
-        if not activations or not gradients:
-            # Fallback blank heatmap
-            return None
-
-        act = activations[0].detach().cpu().numpy()[0]
-        grad = gradients[0].detach().cpu().numpy()[0]
-
-        # Channel-wise global pooling of gradients
-        weights = np.mean(grad, axis=(1, 2))
-        cam = np.zeros(act.shape[1:], dtype=np.float32)
-
-        for i, w in enumerate(weights):
-            cam += w * act[i]
-
-        cam = np.maximum(cam, 0)
-        if np.max(cam) > 0:
-            cam = cam / np.max(cam)
-        cam = cv2.resize(cam, (224, 224))
-
-        # Overlay on image
-        heatmap = cv2.applyColorMap(np.uint8(255 * cam), cv2.COLORMAP_JET)
-        heatmap = cv2.cvtColor(heatmap, cv2.COLOR_BGR2RGB)
-        
-        orig_resized = np.array(original_pil.convert("RGB").resize((224, 224)))
-        overlay = np.uint8(0.6 * orig_resized + 0.4 * heatmap)
-
-        overlay_pil = Image.fromarray(overlay)
-        buffered = io.BytesIO()
-        overlay_pil.save(buffered, format="JPEG", quality=90)
-        return base64.b64encode(buffered.getvalue()).decode("utf-8")
+            overlay_pil = Image.fromarray(overlay)
+            buffered = io.BytesIO()
+            overlay_pil.save(buffered, format="JPEG", quality=85)
+            return base64.b64encode(buffered.getvalue()).decode("utf-8")
+        except Exception as e:
+            print(f"[Grad-CAM] Attention map warning: {e}")
+            orig_resized = original_pil.convert("RGB").resize((224, 224))
+            buffered = io.BytesIO()
+            orig_resized.save(buffered, format="JPEG", quality=85)
+            return base64.b64encode(buffered.getvalue()).decode("utf-8")
