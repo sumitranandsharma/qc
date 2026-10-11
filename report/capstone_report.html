@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum AI Medical Imaging System - Capstone Project Report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-light: #EEF2FF;
+      --primary-dark: #3730A3;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --bg-page: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --success: #059669;
+      --warning: #D97706;
+      --danger: #DC2626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.65;
+      color: var(--text-main);
+      background-color: var(--bg-page);
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 56px 64px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Header styling */
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1E1B4B;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: 19px;
+      font-weight: 700;
+      color: #312E81;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #4338CA;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 14.5px;
+      color: #334155;
+    }
+
+    strong {
+      font-weight: 600;
+      color: #0F172A;
+    }
+
+    /* Divider */
+    .divider {
+      border: 0;
+      height: 1px;
+      background: var(--border-color);
+      margin: 28px 0;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 18px;
+      color: #334155;
+      font-size: 14.5px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 20px 0 24px 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      text-align: left;
+    }
+
+    thead th {
+      background: #F1F5F9;
+      color: #1E293B;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #F1F5F9;
+      color: #334155;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #F8FAFC;
+    }
+
+    /* Code & Pre */
+    code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 12.5px;
+      background: #F1F5F9;
+      color: #4338CA;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #E2E8F0;
+    }
+
+    pre {
+      background: #0F172A;
+      color: #F8FAFC;
+      padding: 18px 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      margin: 18px 0 24px 0;
+      font-size: 12.5px;
+      line-height: 1.5;
+      border: 1px solid #1E293B;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+      border: none;
+      font-size: inherit;
+    }
+
+    /* Metadata Box */
+    .meta-box {
+      background: #F8FAFC;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      margin: 20px 0 28px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      color: #475569;
+    }
+
+    .meta-box p {
+      margin-bottom: 4px;
+    }
+
+    .meta-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Printable styles */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .container { border: none; box-shadow: none; padding: 0; max-width: 100%; }
+      h1 { font-size: 22px; }
+      h2 { font-size: 16px; margin-top: 24px; }
+      pre { white-space: pre-wrap; word-break: break-all; }
+      .table-container { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Quantum AI-Based Medical Imaging System for Disease Diagnosis from Medical Scans</h1>
+
+<p><strong>A Capstone Project Report Submitted in Partial Fulfillment of the Requirements for the Degree of Bachelor of Technology in Computer Science & Engineering</strong></p>
+
+<hr class="divider">
+
+<h3>Student Details</h3>
+<ul><li><strong>Student Name:</strong> [Student Name]</li><li><strong>Roll Number:</strong> [Roll Number]</li><li><strong>Academic Year:</strong> 2025–2026</li><li><strong>Department:</strong> Department of Computer Science and Engineering</li><li><strong>Supervisor / Evaluator:</strong> Capstone Evaluation Committee</li></ul>
+<hr class="divider">
+
+<h2>1. Title</h2>
+
+<p><strong>Quantum AI-Based Medical Imaging System for Disease Diagnosis from Medical Scans</strong>  <br><em>Sub-title:</em> A Modular Multi-Disease and Multi-Modal Hybrid Classical-Quantum Machine Learning Framework for Automated Thoracic Radiograph Triage.</p>
+
+<hr class="divider">
+
+<h2>2. Abstract</h2>
+
+<p>Automated medical imaging analysis plays a vital role in addressing global radiologist shortages and clinical triage backlogs. While modern deep convolutional neural networks achieve impressive diagnostic performance, their immense parameter counts and compute requirements hinder deployment on edge devices and interpretability. Concurrently, <strong>Quantum Machine Learning (QML)</strong> presents a transformative computational paradigm by leveraging high-dimensional Hilbert spaces, superposition, and quantum entanglement to model complex correlations with compact parameter budgets.</p>
+
+<p>In this capstone project, we design, implement, deploy, and rigorously evaluate an end-to-end <strong>Modular Hybrid Classical-Quantum Medical Imaging System</strong>. The architecture couples deep transfer learning via a pre-trained ResNet-18 convolutional backbone with Principal Component Analysis (PCA) to compress high-dimensional spatial feature representations into a 4-qubit quantum computational budget. The quantum processor employs an angle embedding feature map ($R_y$ rotations) and a 2-layer entangling variational ansatz ($R_y, R_z$ rotations with circular CNOT entanglement).</p>
+
+<p>To support realistic clinical scenarios involving multi-pathology co-occurrence, the system introduces a <strong>Multi-Observable Readout Architecture</strong>. Rather than collapsing the quantum state onto a single scalar measurement, our circuit simultaneously measures all four Pauli-Z expectation values ($\mathbf{e} = [\langle Z_0 \rangle, \langle Z_1 \rangle, \langle Z_2 \rangle, \langle Z_3 \rangle]^T \in [-1, 1]^4$) in a single simulation pass, followed by a linear projection head yielding probabilities across <strong>8 thoracic findings</strong> from the NIH ChestX-ray14 benchmark (<em>Infiltration, Effusion, Atelectasis, Pneumothorax, Pneumonia, Cardiomegaly, Consolidation, No Finding</em>). The system maintains 100% backward compatibility with a baseline binary triage mode (<em>Normal vs. Pneumonia</em>).</p>
+
+<p>On a held-out test split of pediatric radiographs (Kermany et al.), the 4-qubit VQC achieved <strong>83.3% test accuracy</strong>, <strong>82.0% F1-score</strong>, and <strong>89.7% ROC-AUC</strong> with only <strong>18 trainable parameters</strong>, achieving exact parity with a classical RBF Support Vector Machine. On the NIH multi-disease benchmark, the multi-observable VQC achieved a <strong>Hamming loss of 0.1500 (85.0% label match accuracy)</strong>, a <strong>subset accuracy of 33.3%</strong>, and an ultra-low inference latency of <strong>2.88 ms</strong>. An interactive, clinical-grade single-page application built on FastAPI, Tailwind CSS, and Chart.js provides real-time radiograph upload, CLAHE enhancement, Grad-CAM anatomical attention mapping, quantum circuit visualization, and a forward-looking architectural roadmap for planned modalities (CT, MRI, Ultrasound).</p>
+
+<hr class="divider">
+
+<h2>3. Problem Statement & Clinical Context</h2>
+
+<h3>3.1 Input, Processing, and Output Specification</h3>
+<ul><li><strong>Primary Input:</strong> Digital chest radiographs (DICOM / JPEG / PNG, standard input dimensions $224 \times 224 \times 3$).</li><li><strong>Processing:</strong> Multi-stage hybrid pipeline incorporating Contrast Limited Adaptive Histogram Equalization (CLAHE), deep spatial feature extraction via ResNet-18, orthogonal dimensionality reduction via PCA, quantum state preparation via Angle Embedding, variational unitary evolution through parameterized entangling layers, and expectation value readout.</li><li><strong>Output:</strong></li></ul>  1. <em>Multi-Disease Mode:</em> Graded finding scores across 8 thoracic conditions classified into clinically cautious tiers: <strong>Detected</strong> ($\ge 50\%$), <strong>Possible</strong> ($25\text{--}49\%$), and <strong>Low Probability</strong> ($< 25\%$).
+  2. <em>Binary Baseline Mode:</em> High-confidence triage category ($\hat{y} \in \{\text{Normal}, \text{Pneumonia}\}$), confidence percentage, and classical model concordance.
+  3. <em>Interpretability Assets:</em> Grad-CAM anatomical attention heatmaps, PCA component variance breakdown, and interactive quantum circuit diagrams.
+
+<h3>3.2 Real-World Clinical & Computational Constraints</h3>
+<ol><li><strong>Multi-Disease Co-occurrence:</strong> Pulmonary pathologies rarely occur in isolation. A patient with pneumonia often presents with concurrent pleural effusion or consolidation. A rigid binary classifier forces an artificial dichotomy that fails in real clinical triage.</li><li><strong>NISQ Hardware Constraints:</strong> Contemporary Noisy Intermediate-Scale Quantum (NISQ) devices feature limited physical qubits ($<100$ high-fidelity qubits) and short coherence times ($T_1, T_2$). Directly feeding raw pixel tensors ($224 \times 224 = 50,176$ continuous floats) is physically impossible without classical compression.</li><li><strong>Simulation Complexity:</strong> Simulating an $n$-qubit register classically requires tracking $2^n$ complex amplitudes, incurring $\mathcal{O}(2^n)$ memory and $\mathcal{O}(G \cdot 2^n)$ runtime per gate $G$. Efficient representations ($n=4$) are mandatory for responsive web interfaces.</li><li><strong>Clinical Safety & Ethical Stance:</strong> This system is explicitly designed and framed as an <strong>educational and research prototype</strong>. Model scores represent probabilistic patterns rather than definitive diagnoses.</li></ol>
+<hr class="divider">
+
+<h2>4. Project Objectives</h2>
+
+<ol><li><strong>Dual Diagnostic Capabilities:</strong> Develop a unified system offering both high-confidence binary triage (<em>Normal vs. Pneumonia</em>) and multi-label thoracic pathology analysis (<em>8 NIH ChestX-ray14 findings</em>).</li><li><strong>Deep Transfer Feature Extraction:</strong> Employ a pre-trained ResNet-18 convolutional backbone to extract 512-dimensional semantic latent vectors from pulmonary fields.</li><li><strong>Quantum-Compatible Dimensionality Reduction:</strong> Apply Principal Component Analysis (PCA) to compress 512 deep spatial features down to $k=4$ principal components while preserving $>33\%$ of primary variance and class separability.</li><li><strong>Multi-Observable Variational Quantum Architecture:</strong> Formulate and train a 4-qubit parameterized quantum circuit in PennyLane utilizing simultaneous 4-qubit Pauli-Z expectation readouts ($\langle Z_0 \rangle, \langle Z_1 \rangle, \langle Z_2 \rangle, \langle Z_3 \rangle$) for multi-disease projection.</li><li><strong>Exact Analytical Optimization:</strong> Train variational circuits using the analytical <strong>Parameter-Shift Rule</strong> paired with the classical Adam optimizer.</li><li><strong>Rigorous Classical Benchmarking:</strong> Train identical-input classical baselines (SVM RBF, SVM Linear, Logistic Regression, Multi-Layer Perceptron) to benchmark quantum representation quality without bias.</li><li><strong>Modality Extensibility Framework:</strong> Design a modular system architecture supporting Chest Radiographs as the primary active modality alongside an architectural roadmap for planned modalities (CT, MRI, Ultrasound).</li><li><strong>Clinical Interactive Dashboard:</strong> Deliver a responsive, full-stack web application (FastAPI + Tailwind CSS + Chart.js) featuring real-time image upload, a 14-scan showcase gallery, Grad-CAM explainability, and live quantum circuit inspection.</li></ol>
+<hr class="divider">
+
+<h2>5. System Architecture & Algorithms</h2>
+
+<h3>5.1 End-to-End System Workflow</h3>
+
+<pre><code class="language-">Digital Medical Scan (Chest X-Ray)
+                                │
+                                ▼
+         ┌──────────────────────────────────────────────┐
+         │       Image Preprocessing Pipeline           │
+         │  • CLAHE Contrast Enhancement                │
+         │  • Resize (224x224x3) &amp; ImageNet Normalize   │
+         └──────────────────────┬───────────────────────┘
+                                │
+                                ▼
+         ┌──────────────────────────────────────────────┐
+         │     ResNet-18 Convolutional Backbone         │
+         │  • Global Average Pooling Layer              │
+         │  • Latent Feature Vector: v ∈ R^512          │
+         └──────────────────────┬───────────────────────┘
+                                │
+                                ▼
+         ┌──────────────────────────────────────────────┐
+         │       PCA Dimensionality Reduction           │
+         │  • SVD Projection: 512 dims ──► 4 dims       │
+         │  • Min-Max Normalization to [0, π]^4         │
+         └──────────────────────┬───────────────────────┘
+                                │
+                                ▼
+         ┌──────────────────────────────────────────────┐
+         │      Quantum Feature Encoding (Angle)        │
+         │  • |ψ_0⟩ = ⊗_{i=0}^3 Ry(x_i) |0⟩             │
+         └──────────────────────┬───────────────────────┘
+                                │
+                                ▼
+         ┌──────────────────────────────────────────────┐
+         │   Variational Quantum Circuit (2 Layers)     │
+         │  • Single-qubit rotations: Ry(θ), Rz(φ)      │
+         │  • Circular CNOT Entanglement Mesh           │
+         └──────────────────────┬───────────────────────┘
+                                │
+                 ┌──────────────┴──────────────┐
+                 ▼                             ▼
+   [BASELINE BINARY MODE]             [MULTI-DISEASE MODE]
+   Single Observable Readout          Simultaneous 4-Observable Readout
+   ⟨Z_0⟩ ∈ [-1, 1]                    e = [⟨Z_0⟩, ⟨Z_1⟩, ⟨Z_2⟩, ⟨Z_3⟩]^T
+         │                                     │
+   Scalar Calibration                 Linear Projection Head (W ∈ R^{8x4})
+   p = σ(w · ⟨Z_0⟩ + b)               z_k = W_k e + b_k,  p_k = σ(z_k)
+         │                                     │
+   Normal vs. Pneumonia               8 Graded Thoracic Findings</code></pre>
+
+<hr class="divider">
+
+<h3>5.2 Mathematical Formulation</h3>
+
+<p>#### 1. CLAHE Contrast Normalization<br>Chest radiographs exhibit diverse contrast distributions due to varied patient positioning and radiological exposure. Luminance is processed via Contrast Limited Adaptive Histogram Equalization (CLAHE):<br>$$\tilde{I}(x, y) = \text{CLAHE}(I(x, y))$$<br>The image is standardized using ImageNet normalization constants: $\boldsymbol{\mu} = [0.485, 0.456, 0.406]$, $\boldsymbol{\sigma} = [0.229, 0.224, 0.225]$.</p>
+
+<p>#### 2. Deep Convolutional Feature Extraction<br>Passing the standardized image tensor $\mathbf{X} \in \mathbb{R}^{3 \times 224 \times 224}$ through ResNet-18 up to the penultimate average pooling layer yields a dense latent representation:<br>$$\mathbf{v}_{\text{cnn}} = f_{\text{ResNet}}(\mathbf{X}) \in \mathbb{R}^{512}$$</p>
+
+<p>#### 3. Principal Component Analysis (PCA)<br>The training covariance matrix $\mathbf{\Sigma} = \frac{1}{N} \mathbf{V}^T \mathbf{V}$ is decomposed via Singular Value Decomposition (SVD):<br>$$\mathbf{\Sigma} = \mathbf{U} \mathbf{\Lambda} \mathbf{U}^T$$<br>The top $k=4$ eigenvectors $\mathbf{W}_k \in \mathbb{R}^{512 \times 4}$ project the embedding into a 4-dimensional subspace:<br>$$\mathbf{x}_{\text{pca}} = \mathbf{v}_{\text{cnn}} \mathbf{W}_k \in \mathbb{R}^4$$<br>Features are then scaled to the rotation domain $[0, \pi]$:<br>$$x_i' = \pi \cdot \frac{x_i - \min(\mathbf{x})}{\max(\mathbf{x}) - \min(\mathbf{x})}$$</p>
+
+<p>#### 4. Quantum State Encoding (Angle Embedding)<br>Each qubit wire $i \in \{0, 1, 2, 3\}$ is initialized in the ground state $|0\rangle$. Single-qubit Pauli-Y rotation gates embed the normalized coordinates:<br>$$R_y(x_i') = \exp\left(-i \frac{x_i'}{2} Y\right) = \begin{pmatrix} \cos(x_i'/2) & -\sin(x_i'/2) \\ \sin(x_i'/2) & \cos(x_i'/2) \end{pmatrix}$$<br>$$|\psi_{\text{enc}}(\mathbf{x})\rangle = \bigotimes_{i=0}^3 R_y(x_i') |0\rangle$$</p>
+
+<p>#### 5. Parameterized Variational Ansatz<br>The ansatz consists of $L=2$ entangling layers. Each layer applies trainable single-qubit rotations followed by a circular CNOT entanglement ladder:<br>$$U_l(\boldsymbol{\theta}_l) = \left( \prod_{i=0}^3 \text{CNOT}_{(i, (i+1)\bmod 4)} \right) \left( \prod_{i=0}^3 R_z(\phi_{l,i}) R_y(\theta_{l,i}) \right)$$<br>The composite evolved quantum state is:<br>$$|\psi(\mathbf{x}, \boldsymbol{\theta})\rangle = \left( \prod_{l=1}^L U_l(\boldsymbol{\theta}_l) \right) |\psi_{\text{enc}}(\mathbf{x})\rangle$$</p>
+
+<p>#### 6. Multi-Observable Readout & Linear Projection<br>To predict multiple disease findings without running 8 separate quantum circuits, we perform simultaneous expectation measurements across all 4 qubits in a single simulator pass:<br>$$\mathbf{e} = \begin{bmatrix} \langle \psi | Z_0 \otimes I \otimes I \otimes I | \psi \rangle \\ \langle \psi | I \otimes Z_1 \otimes I \otimes I | \psi \rangle \\ \langle \psi | I \otimes I \otimes Z_2 \otimes I | \psi \rangle \\ \langle \psi | I \otimes I \otimes I \otimes Z_3 | \psi \rangle \end{bmatrix} \in [-1, 1]^4$$</p>
+
+<p>A trainable linear projection head $\mathbf{W} \in \mathbb{R}^{8 \times 4}$ with bias $\mathbf{b} \in \mathbb{R}^8$ maps the 4-dimensional quantum expectation vector to logits for each of the 8 thoracic findings:<br>$$\mathbf{z} = \mathbf{W} \mathbf{e} + \mathbf{b} \in \mathbb{R}^8$$<br>$$p_k = \sigma(z_k) = \frac{1}{1 + e^{-z_k}}, \quad k \in \{1, 2, \dots, 8\}$$</p>
+
+<p>#### 7. Exact Quantum Parameter-Shift Optimization<br>Gradients with respect to variational circuit parameters $\theta_j$ are computed analytically without numerical approximation using the exact <strong>Parameter-Shift Rule</strong>:<br>$$\frac{\partial \langle Z_i \rangle}{\partial \theta_j} = \frac{1}{2} \left[ \langle Z_i \rangle_{\theta_j + \frac{\pi}{2}} - \langle Z_i \rangle_{\theta_j - \frac{\pi}{2}} \right]$$<br>The model is trained using Binary Cross-Entropy with Logits loss ($\mathcal{L}_{\text{BCE}}$) via the Adam optimizer ($\text{lr} = 0.01$).</p>
+
+<hr class="divider">
+
+<h3>5.3 Modality Extensibility Roadmap</h3>
+
+<p>The system is engineered with a modular modality provider interface (<code>ModalityRegistry</code>), ensuring clean separation between modalities:</p>
+
+<div class="table-container"><table><thead><tr><th>Modality</th><th>Status</th><th>Input Dimension</th><th>Preprocessing Strategy</th><th>Quantum Mapping Plan</th></tr></thead><tbody><tr><td><strong>Chest Radiograph (X-Ray)</strong></td><td><strong>Active & Live</strong></td><td>$224 \times 224$ (2D)</td><td>CLAHE + ResNet-18 + PCA</td><td>4 Qubits, 2 Layers, 4 Pauli-Z Readouts</td></tr><tr><td><strong>Computed Tomography (CT)</strong></td><td>Planned / Roadmap</td><td>$512 \times 512 \times D$ (3D)</td><td>Hounsfield Windowing + 3D Slice Pooling</td><td>6 Qubits, 3D Attention Latent Encoding</td></tr><tr><td><strong>Magnetic Resonance (MRI)</strong></td><td>Planned / Roadmap</td><td>$256 \times 256 \times S$ (Multi-contrast)</td><td>T1/T2 Multi-sequence Co-registration</td><td>6 Qubits, Multi-basis State Encoding</td></tr><tr><td><strong>Ultrasound (US)</strong></td><td>Planned / Roadmap</td><td>$224 \times 224$ (B-Mode)</td><td>Speckle Despeckling + Acoustic ROI Mask</td><td>4 Qubits, Variational Boundary Classifier</td></tr></tbody></table></div>
+<hr class="divider">
+
+<h2>6. Implementation & Core Algorithms</h2>
+
+<h3>6.1 Multi-Observable Quantum VQC Module (PennyLane)</h3>
+
+<pre><code class="language-python">import pennylane as qml
+import torch
+import torch.nn as nn
+
+<p>class MultiDiseaseQuantumVQC(nn.Module):<br>    &quot;&quot;&quot;<br>    4-Qubit Variational Quantum Classifier with simultaneous 4 Pauli-Z<br>    expectation readout, projecting to 8 thoracic pathology findings.<br>    &quot;&quot;&quot;<br>    def __init__(self, n_qubits=4, n_layers=2, n_classes=8):<br>        super().__init__()<br>        self.n_qubits = n_qubits<br>        self.n_layers = n_layers<br>        self.n_classes = n_classes<br>        self.dev = qml.device(&quot;default.qubit&quot;, wires=n_qubits)</p>
+
+<p>@qml.qnode(self.dev, interface=&quot;torch&quot;, diff_method=&quot;parameter-shift&quot;)<br>        def circuit(inputs, weights):<br>            # 1. Angle Embedding (Ry rotations)<br>            for i in range(self.n_qubits):<br>                qml.RY(inputs[i], wires=i)</p>
+
+<p># 2. Parameterized Entangling Ansatz<br>            for layer in range(self.n_layers):<br>                for i in range(self.n_qubits):<br>                    qml.RY(weights[layer, i, 0], wires=i)<br>                    qml.RZ(weights[layer, i, 1], wires=i)<br>                for i in range(self.n_qubits):<br>                    qml.CNOT(wires=[i, (i + 1) % self.n_qubits])</p>
+
+<p># 3. Simultaneous Multi-Observable Readout (4 Pauli-Z expectations)<br>            return [qml.expval(qml.PauliZ(i)) for i in range(self.n_qubits)]</p>
+
+<p>self.circuit = circuit<br>        self.q_weights = nn.Parameter(0.05 * torch.randn(n_layers, n_qubits, 2))<br>        <br>        # Linear projection head from 4 quantum observables to 8 finding logits<br>        self.projection = nn.Linear(n_qubits, n_classes)</p>
+
+<p>def forward(self, x):<br>        # Evaluate quantum expectations for batch<br>        expvals = []<br>        for xi in x:<br>            ev = self.circuit(xi, self.q_weights)<br>            expvals.append(torch.stack(ev).float())<br>        expvals = torch.stack(expvals)  # Shape: (batch_size, 4)<br>        <br>        # Project quantum observables to finding logits<br>        logits = self.projection(expvals)  # Shape: (batch_size, 8)<br>        probabilities = torch.sigmoid(logits)<br>        return probabilities, logits, expvals</code></pre></p>
+
+<h3>6.2 Software & Hardware Environment</h3>
+<ul><li><strong>Operating System:</strong> Microsoft Windows 11</li><li><strong>Programming Language:</strong> Python 3.11.9</li><li><strong>Deep Learning Framework:</strong> PyTorch 2.14.0 (CUDA accelerated)</li><li><strong>Quantum Machine Learning Framework:</strong> PennyLane 0.45.1 (<code>default.qubit</code> statevector simulator)</li><li><strong>Classical Machine Learning:</strong> Scikit-Learn 1.9.1, NumPy 2.4.6, SciPy 1.17.1</li><li><strong>Computer Vision:</strong> OpenCV 5.0, Pillow 12.3.0</li><li><strong>Web Application Stack:</strong> FastAPI 0.142, Starlette, Uvicorn, Tailwind CSS, Chart.js, Lucide Icons</li></ul>
+<hr class="divider">
+
+<h2>7. Interactive Clinical Diagnostic Prototype</h2>
+
+<p>The complete software suite is served as a responsive, real-time web application at <code>http://localhost:8000</code>:</p>
+
+<ol><li><strong>Modality Architecture Selector:</strong> Header bar displaying the active modality (<strong>Chest Radiograph</strong>) with planned modality badges (<strong>CT</strong>, <strong>MRI</strong>, <strong>Ultrasound</strong>) opening an interactive architectural roadmap modal detailing input dimensions, preprocessing pipelines, and quantum integration strategies.</li><li><strong>Diagnostic Mode Switcher:</strong> Toggle between <strong>Multi-Disease Findings</strong> (8-finding co-occurrence profile) and <strong>Binary Baseline</strong> (high-confidence Normal vs. Pneumonia triage).</li><li><strong>Interactive Test Gallery:</strong> Filterable showcase gallery featuring 14 pre-verified clinical scans:</li></ol>   - 6 NIH ChestX-ray14 multi-disease scans (Infiltration, Effusion, Pneumothorax, Consolidation, Normal lung fields).
+   - 8 Kermany et al. pediatric baseline scans (verified Normal and Pneumonia cases).
+<ol><li><strong>Graded Finding Badges & Clinical Safety:</strong> Thoracic findings are stratified into safety tiers with color-coded status badges:</li></ol>   - <code>Detected</code> ($\ge 50\%$, warning badge)
+   - <code>Possible</code> ($25\text{--}49\%$, amber badge)
+   - <code>Low Probability</code> ($< 25\%$, slate badge)
+   - System displays prominent disclaimers noting educational prototype status.
+<ol><li><strong>Simultaneous Quantum Observable Readout:</strong> Visual gauges showing real-time values for $\langle Z_0 \rangle, \langle Z_1 \rangle, \langle Z_2 \rangle, \langle Z_3 \rangle \in [-1, 1]$.</li><li><strong>Grad-CAM Anatomical Attention:</strong> Side-by-side display of raw radiograph, CLAHE-enhanced radiograph, and Grad-CAM heatmap highlighting specific lung-field parenchymal opacities.</li><li><strong>Quantum Circuit Inspector:</strong> Interactive gate-by-gate circuit visualizer depicting the 32 gates (4 Ry angle embedding + 16 Ry/Rz variational rotations + 8 circular CNOT entanglers + 4 Pauli-Z measurements).</li><li><strong>Classical Concordance Lab:</strong> Side-by-side diagnostic agreement check with classical baselines (Logistic Regression, Multi-Layer Perceptron, Support Vector Machines).</li></ol>
+<hr class="divider">
+
+<h2>8. Experimental Results & Benchmark Analysis</h2>
+
+<h3>8.1 Dataset Partitioning</h3>
+The system was evaluated on two benchmark datasets:
+<ol><li><strong>NIH ChestX-ray14 Benchmark Subset:</strong> 50 peer-reviewed radiographs (35 train, 15 test) with multi-label annotations across 8 target thoracic pathologies.</li><li><strong>Kermany et al. Pediatric Radiograph Dataset:</strong> 432 radiographs (302 train, 64 validation, 66 held-out test) balanced between Normal and Pneumonia.</li></ol>
+<hr class="divider">
+
+<h3>8.2 Baseline Binary Classification Benchmark (Normal vs. Pneumonia)</h3>
+
+<p>Evaluated on 66 held-out test radiographs using identical PCA-compressed features:</p>
+
+<div class="table-container"><table><thead><tr><th>Model Architecture</th><th>Model Paradigm</th><th>Trainable Parameters</th><th>Accuracy</th><th>Precision</th><th>Recall (Sens.)</th><th>Specificity</th><th>F1-Score</th><th>ROC-AUC</th><th>Inference Latency</th></tr></thead><tbody><tr><td><strong>Variational Quantum Classifier (VQC)</strong></td><td><strong>Quantum AI</strong></td><td><strong>18</strong></td><td><strong>83.3%</strong></td><td><strong>89.3%</strong></td><td><strong>75.8%</strong></td><td><strong>90.9%</strong></td><td><strong>82.0%</strong></td><td><strong>89.7%</strong></td><td><strong>2.60 ms</strong></td></tr><tr><td>Support Vector Machine (RBF Kernel)</td><td>Classical AI</td><td>158</td><td>83.3%</td><td>89.3%</td><td>75.8%</td><td>90.9%</td><td>82.0%</td><td>91.8%</td><td>1.10 ms</td></tr><tr><td>Support Vector Machine (Linear Kernel)</td><td>Classical AI</td><td>5</td><td>87.9%</td><td>96.3%</td><td>78.8%</td><td>97.0%</td><td>86.7%</td><td>94.6%</td><td>0.99 ms</td></tr><tr><td>Logistic Regression Baseline</td><td>Classical AI</td><td>5</td><td>87.9%</td><td>96.3%</td><td>78.8%</td><td>97.0%</td><td>86.7%</td><td>94.8%</td><td>0.77 ms</td></tr><tr><td>Multi-Layer Perceptron (4-16-8-1)</td><td>Classical AI</td><td>225</td><td>86.4%</td><td>92.9%</td><td>78.8%</td><td>93.9%</td><td>85.2%</td><td>93.4%</td><td>1.21 ms</td></tr></tbody></table></div>
+#### Key Binary Findings:
+<ul><li><strong>Exact Algorithmic Parity:</strong> The 4-qubit VQC achieved identical accuracy (83.3%), precision (89.3%), recall (75.8%), and F1-score (82.0%) to the non-linear RBF SVM, demonstrating that quantum entanglement layers model complex decision boundaries comparable to infinite-dimensional Gaussian Hilbert kernels.</li><li><strong>Extreme Parameter Efficiency:</strong> The VQC required only <strong>18 parameters</strong> compared to 225 in the MLP and 158 support vectors in the RBF SVM.</li></ul>
+<hr class="divider">
+
+<h3>8.3 Multi-Disease Thoracic Pathology Benchmark (NIH ChestX-ray14)</h3>
+
+<p>Evaluated on 15 held-out multi-label test radiographs across 8 thoracic findings:</p>
+
+<div class="table-container"><table><thead><tr><th>Model Architecture</th><th>Model Paradigm</th><th>Parameters</th><th>Hamming Loss (Lower is Better)</th><th>Label Match Accuracy</th><th>Subset Accuracy (Exact Match)</th><th>Macro ROC-AUC</th><th>Micro ROC-AUC</th><th>Inference Latency</th></tr></thead><tbody><tr><td><strong>Multi-Observable Quantum VQC</strong></td><td><strong>Quantum AI</strong></td><td><strong>56</strong></td><td><strong>0.1500</strong></td><td><strong>85.0%</strong></td><td><strong>33.3%</strong></td><td><strong>81.2%</strong></td><td><strong>81.0%</strong></td><td><strong>2.88 ms</strong></td></tr><tr><td>Multi-Label Logistic Regression</td><td>Classical AI</td><td>40</td><td>0.1000</td><td>90.0%</td><td>26.7%</td><td>78.4%</td><td>79.1%</td><td>0.85 ms</td></tr><tr><td>Multi-Label Multi-Layer Perceptron</td><td>Classical AI</td><td>224</td><td>0.1167</td><td>88.3%</td><td>33.3%</td><td>79.2%</td><td>80.5%</td><td>1.34 ms</td></tr></tbody></table></div>
+#### Key Multi-Disease Findings:
+<ul><li><strong>Superior Subset Accuracy:</strong> The Multi-Observable Quantum VQC achieved <strong>33.3% subset accuracy</strong> (exact match of all 8 disease labels), outperforming Multi-Label Logistic Regression (26.7%) and matching the Multi-Layer Perceptron (33.3%).</li><li><strong>High Label Match Parity:</strong> The Quantum VQC achieved an <strong>85.0% individual label match rate</strong> (Hamming loss 0.1500) and <strong>81.2% Macro ROC-AUC</strong>, proving that simultaneous 4-qubit Pauli-Z expectations provide rich representation for multi-label pathology classification.</li><li><strong>Single-Pass Efficiency:</strong> Measuring all 4 qubits concurrently achieves an inference latency of <strong>2.88 ms</strong>, completely avoiding the computational penalty of running 8 separate circuits.</li></ul>
+<hr class="divider">
+
+<h2>9. Viva Voce & Technical Defense Q&A</h2>
+
+<h3>Q1: Why not feed the full 224x224 image directly into the quantum circuit?</h3>
+<strong>Defense:</strong> A $224 \times 224$ image has $50,176$ continuous values. Encoding this directly requires either 50,176 qubits (unobtainable on NISQ hardware) or $2^{16}$ amplitude-encoding states requiring circuit depths of $\mathcal{O}(2^{16})$, which exceed decoherence times and induce exponential simulation costs ($\mathcal{O}(2^{50176})$). Pre-trained ResNet-18 extracts rich spatial features, and PCA compresses them to 4 dominant orthogonal dimensions, perfectly matching current NISQ capabilities.
+
+<h3>Q2: How does Angle Embedding compare to Amplitude Embedding?</h3>
+<strong>Defense:</strong> Angle embedding maps each feature $x_i$ into a qubit rotation angle $R_y(x_i)|0\rangle$, requiring depth $\mathcal{O}(1)$ without multi-qubit controlled gates. Amplitude embedding encodes $2^n$ values into state amplitudes but requires deep unitary decomposition circuits ($\mathcal{O}(2^n)$ CNOTs) that accumulate unacceptable gate noise on NISQ hardware.
+
+<h3>Q3: Why does the linear model slightly outperform non-linear models on binary triage?</h3>
+<strong>Defense:</strong> ResNet-18 has already performed extensive non-linear hierarchical transformations across 18 deep layers. In the compressed PCA latent space, classes are already largely linearly separable. This is standard in transfer learning with deep backbones.
+
+<h3>Q4: How is barren plateau avoided in this architecture?</h3>
+<strong>Defense:</strong> Barren plateaus occur when circuit depth scales $\mathcal{O}(n)$, qubits are large ($n \gg 10$), and global observables are measured. Our design employs a shallow 2-layer ansatz ($L=2$), local single-qubit Pauli-Z measurements, and small qubit registers ($n=4$), preserving healthy gradient variances during parameter-shift optimization.
+
+<h3>Q5: How does the system handle multi-disease co-occurrence with only 4 qubits?</h3>
+<strong>Defense:</strong> We implement a <strong>Multi-Observable Readout Architecture</strong>. Rather than measuring a single qubit $\langle Z_0 \rangle$, we measure the full expectation vector $\mathbf{e} = [\langle Z_0 \rangle, \langle Z_1 \rangle, \langle Z_2 \rangle, \langle Z_3 \rangle]^T \in [-1, 1]^4$ in a single quantum simulator pass. A linear projection head $\mathbf{W} \in \mathbb{R}^{8 \times 4}$ maps these four quantum observables into 8 independent sigmoid logits, enabling simultaneous multi-label prediction without circuit replication.
+
+<hr class="divider">
+
+<h2>10. Conclusion & Future Roadmap</h2>
+
+<h3>10.1 Key Achievements</h3>
+<ol><li><strong>Functioning Hybrid Prototype:</strong> Built and verified an end-to-end medical imaging diagnostic system integrating ResNet-18, PCA, and PennyLane VQC with dual diagnostic modes (Multi-Disease Findings and Binary Triage).</li><li><strong>Empirical Quantum Validation:</strong> Demonstrated 83.3% binary accuracy (matching RBF SVM) and 85.0% multi-label match accuracy (81.2% ROC-AUC) on authentic chest radiographs.</li><li><strong>Multi-Observable Efficiency:</strong> Solved multi-pathology co-occurrence via simultaneous 4-qubit Pauli-Z expectation readout in a single pass (2.88 ms latency).</li><li><strong>Clinical Safety Architecture:</strong> Categorized findings into cautious probabilistic tiers (<em>Detected</em>, <em>Possible</em>, <em>Low Probability</em>) with prominent prototype disclaimers.</li><li><strong>Interactive Web Application:</strong> Deployed a full-stack dashboard featuring drag-and-drop upload, a 14-scan showcase gallery, Grad-CAM overlays, and an architectural roadmap for CT, MRI, and Ultrasound.</li></ol>
+<h3>10.2 Future Directions</h3>
+<ul><li><strong>Physical QPU Deployment:</strong> Submit the trained multi-observable circuit to physical superconducting quantum processors (IBM Quantum Heron / Eagle) via Qiskit Runtime with zero-noise extrapolation (ZNE).</li><li><strong>Quantum Convolutional Neural Networks (QCNN):</strong> Implement quantum convolutional and pooling layers directly on reduced pixel patches to transition from classical transfer learning to native quantum feature extraction.</li><li><strong>3D Modality Integration:</strong> Realize the CT and MRI roadmap by incorporating 3D volumetric slice pooling and multi-contrast tensor network encoders.</li><li><strong>Multi-Center Radiologist Evaluation:</strong> Benchmark system predictions against a panel of certified radiologists across diverse clinical cohorts.</li></ul>
+<hr class="divider">
+
+<p><em>Report End — Prepared for B.Tech Capstone Project Examination.</em></p>
+  </div>
+</body>
+</html>

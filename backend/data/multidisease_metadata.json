@@ -1,0 +1,1242 @@
+{
+  "target_findings": [
+    "Infiltration",
+    "Effusion",
+    "Atelectasis",
+    "Pneumothorax",
+    "Pneumonia",
+    "Cardiomegaly",
+    "Consolidation",
+    "No Finding"
+  ],
+  "total_images": 50,
+  "records": [
+    {
+      "index": 0,
+      "filename": "nih_scan_000_pid7943.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_000_pid7943.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 71,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 1,
+      "filename": "nih_scan_001_pid20437.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_001_pid20437.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 56,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 2,
+      "filename": "nih_scan_002_pid19466.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_002_pid19466.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 43,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 3,
+      "filename": "nih_scan_003_pid18109.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_003_pid18109.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 70,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 4,
+      "filename": "nih_scan_004_pid16494.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_004_pid16494.jpg",
+      "raw_labels": [
+        "Nodule"
+      ],
+      "target_findings": [
+        "Nodule"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 58,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 5,
+      "filename": "nih_scan_005_pid22532.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_005_pid22532.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 40,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 6,
+      "filename": "nih_scan_006_pid21835.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_006_pid21835.jpg",
+      "raw_labels": [
+        "Infiltration",
+        "Pneumonia"
+      ],
+      "target_findings": [
+        "Infiltration",
+        "Pneumonia"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 39,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 7,
+      "filename": "nih_scan_007_pid25194.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_007_pid25194.jpg",
+      "raw_labels": [
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 43,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 8,
+      "filename": "nih_scan_008_pid9349.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_008_pid9349.jpg",
+      "raw_labels": [
+        "Emphysema",
+        "Mass"
+      ],
+      "target_findings": [
+        "Emphysema",
+        "Mass"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 70,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 9,
+      "filename": "nih_scan_009_pid6973.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_009_pid6973.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 62,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 10,
+      "filename": "nih_scan_010_pid14470.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_010_pid14470.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 47,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 11,
+      "filename": "nih_scan_011_pid12515.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_011_pid12515.jpg",
+      "raw_labels": [
+        "Atelectasis"
+      ],
+      "target_findings": [
+        "Atelectasis"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 28,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 12,
+      "filename": "nih_scan_012_pid6123.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_012_pid6123.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 28,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 13,
+      "filename": "nih_scan_013_pid1836.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_013_pid1836.jpg",
+      "raw_labels": [
+        "Mass",
+        "Nodule"
+      ],
+      "target_findings": [
+        "Mass",
+        "Nodule"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 50,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 14,
+      "filename": "nih_scan_014_pid1347.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_014_pid1347.jpg",
+      "raw_labels": [
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 49,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 15,
+      "filename": "nih_scan_015_pid9624.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_015_pid9624.jpg",
+      "raw_labels": [
+        "Emphysema"
+      ],
+      "target_findings": [
+        "Emphysema"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 65,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 16,
+      "filename": "nih_scan_016_pid12594.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_016_pid12594.jpg",
+      "raw_labels": [
+        "Fibrosis"
+      ],
+      "target_findings": [
+        "Fibrosis"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 53,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 17,
+      "filename": "nih_scan_017_pid28014.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_017_pid28014.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 55,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 18,
+      "filename": "nih_scan_018_pid14616.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_018_pid14616.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 49,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 19,
+      "filename": "nih_scan_019_pid12640.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_019_pid12640.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 67,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 20,
+      "filename": "nih_scan_020_pid18591.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_020_pid18591.jpg",
+      "raw_labels": [
+        "Nodule"
+      ],
+      "target_findings": [
+        "Nodule"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 66,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 21,
+      "filename": "nih_scan_021_pid2111.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_021_pid2111.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 58,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 22,
+      "filename": "nih_scan_022_pid18960.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_022_pid18960.jpg",
+      "raw_labels": [
+        "Pneumothorax"
+      ],
+      "target_findings": [
+        "Pneumothorax"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 26,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 23,
+      "filename": "nih_scan_023_pid2466.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_023_pid2466.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 57,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 24,
+      "filename": "nih_scan_024_pid3028.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_024_pid3028.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 58,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 25,
+      "filename": "nih_scan_025_pid2058.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_025_pid2058.jpg",
+      "raw_labels": [
+        "Emphysema",
+        "Pneumothorax"
+      ],
+      "target_findings": [
+        "Pneumothorax"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 62,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 26,
+      "filename": "nih_scan_026_pid12509.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_026_pid12509.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 59,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 27,
+      "filename": "nih_scan_027_pid12294.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_027_pid12294.jpg",
+      "raw_labels": [
+        "Effusion"
+      ],
+      "target_findings": [
+        "Effusion"
+      ],
+      "binary_vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 37,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 28,
+      "filename": "nih_scan_028_pid25238.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_028_pid25238.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 29,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 29,
+      "filename": "nih_scan_029_pid24315.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_029_pid24315.jpg",
+      "raw_labels": [
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 52,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 30,
+      "filename": "nih_scan_030_pid4671.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_030_pid4671.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 51,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 31,
+      "filename": "nih_scan_031_pid20289.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_031_pid20289.jpg",
+      "raw_labels": [
+        "Effusion",
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Effusion",
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 64,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 32,
+      "filename": "nih_scan_032_pid11804.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_032_pid11804.jpg",
+      "raw_labels": [
+        "Atelectasis",
+        "Infiltration",
+        "Mass"
+      ],
+      "target_findings": [
+        "Atelectasis",
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 56,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 33,
+      "filename": "nih_scan_033_pid11705.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_033_pid11705.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 12,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 34,
+      "filename": "nih_scan_034_pid19643.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_034_pid19643.jpg",
+      "raw_labels": [
+        "Atelectasis",
+        "Cardiomegaly",
+        "Effusion",
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Atelectasis",
+        "Cardiomegaly",
+        "Effusion",
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "patient_age": 31,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 35,
+      "filename": "nih_scan_035_pid13993.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_035_pid13993.jpg",
+      "raw_labels": [
+        "Consolidation",
+        "Effusion"
+      ],
+      "target_findings": [
+        "Consolidation",
+        "Effusion"
+      ],
+      "binary_vector": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "patient_age": 42,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 36,
+      "filename": "nih_scan_036_pid10352.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_036_pid10352.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 31,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 37,
+      "filename": "nih_scan_037_pid6061.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_037_pid6061.jpg",
+      "raw_labels": [
+        "Atelectasis",
+        "Effusion"
+      ],
+      "target_findings": [
+        "Atelectasis",
+        "Effusion"
+      ],
+      "binary_vector": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 60,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 38,
+      "filename": "nih_scan_038_pid549.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_038_pid549.jpg",
+      "raw_labels": [
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 68,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 39,
+      "filename": "nih_scan_039_pid1561.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_039_pid1561.jpg",
+      "raw_labels": [
+        "Emphysema",
+        "Pneumothorax"
+      ],
+      "target_findings": [
+        "Pneumothorax"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 24,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 40,
+      "filename": "nih_scan_040_pid16807.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_040_pid16807.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 59,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 41,
+      "filename": "nih_scan_041_pid8008.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_041_pid8008.jpg",
+      "raw_labels": [
+        "Effusion",
+        "Pneumonia"
+      ],
+      "target_findings": [
+        "Effusion",
+        "Pneumonia"
+      ],
+      "binary_vector": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 23,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 42,
+      "filename": "nih_scan_042_pid16643.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_042_pid16643.jpg",
+      "raw_labels": [
+        "Effusion",
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Effusion",
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 51,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 43,
+      "filename": "nih_scan_043_pid10594.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_043_pid10594.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 22,
+      "patient_gender": "F",
+      "view_position": "PA"
+    },
+    {
+      "index": 44,
+      "filename": "nih_scan_044_pid7551.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_044_pid7551.jpg",
+      "raw_labels": [
+        "Cardiomegaly"
+      ],
+      "target_findings": [
+        "Cardiomegaly"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "patient_age": 26,
+      "patient_gender": "M",
+      "view_position": "AP"
+    },
+    {
+      "index": 45,
+      "filename": "nih_scan_045_pid20820.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_045_pid20820.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 13,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 46,
+      "filename": "nih_scan_046_pid18789.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_046_pid18789.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 45,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 47,
+      "filename": "nih_scan_047_pid12020.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_047_pid12020.jpg",
+      "raw_labels": [
+        "Pneumothorax"
+      ],
+      "target_findings": [
+        "Pneumothorax"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 72,
+      "patient_gender": "M",
+      "view_position": "PA"
+    },
+    {
+      "index": 48,
+      "filename": "nih_scan_048_pid5094.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_048_pid5094.jpg",
+      "raw_labels": [
+        "Infiltration"
+      ],
+      "target_findings": [
+        "Infiltration"
+      ],
+      "binary_vector": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "patient_age": 56,
+      "patient_gender": "F",
+      "view_position": "AP"
+    },
+    {
+      "index": 49,
+      "filename": "nih_scan_049_pid9916.jpg",
+      "image_path": "C:\\SAH\\backend\\data\\multidisease_images\\nih_scan_049_pid9916.jpg",
+      "raw_labels": [
+        "No Finding"
+      ],
+      "target_findings": [
+        "No Finding"
+      ],
+      "binary_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "patient_age": 53,
+      "patient_gender": "F",
+      "view_position": "PA"
+    }
+  ]
+}

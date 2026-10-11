@@ -1,0 +1,118 @@
+[
+  {
+    "id": "nih_sample_infiltration_pneumonia",
+    "filename": "nih_sample_infiltration_pneumonia.jpg",
+    "findings": [
+      "Infiltration",
+      "Pneumonia"
+    ],
+    "description": "Infiltration & Pneumonia",
+    "binary_vector": [
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "nih_sample_atelectasis_effusion",
+    "filename": "nih_sample_atelectasis_effusion.jpg",
+    "findings": [
+      "Atelectasis",
+      "Cardiomegaly",
+      "Effusion",
+      "Infiltration"
+    ],
+    "description": "Atelectasis & Effusion",
+    "binary_vector": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "nih_sample_cardiomegaly",
+    "filename": "nih_sample_cardiomegaly.jpg",
+    "findings": [
+      "Atelectasis",
+      "Cardiomegaly",
+      "Effusion",
+      "Infiltration"
+    ],
+    "description": "Cardiomegaly (Enlarged Heart)",
+    "binary_vector": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "nih_sample_pneumothorax",
+    "filename": "nih_sample_pneumothorax.jpg",
+    "findings": [
+      "Pneumothorax"
+    ],
+    "description": "Pneumothorax (Collapsed Lung)",
+    "binary_vector": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "id": "nih_sample_consolidation",
+    "filename": "nih_sample_consolidation.jpg",
+    "findings": [
+      "Consolidation",
+      "Effusion"
+    ],
+    "description": "Consolidation & Effusion",
+    "binary_vector": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "id": "nih_sample_no_finding",
+    "filename": "nih_sample_no_finding.jpg",
+    "findings": [
+      "No Finding"
+    ],
+    "description": "No Finding (Normal Appearance)",
+    "binary_vector": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+    ]
+  }
+]

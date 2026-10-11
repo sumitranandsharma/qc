@@ -1,0 +1,525 @@
+{
+  "dataset_split": {
+    "train_samples": 302,
+    "val_samples": 64,
+    "test_samples": 66,
+    "classes": [
+      "Normal",
+      "Pneumonia"
+    ],
+    "image_size": "224x224x3",
+    "cnn_features": 512,
+    "pca_components": 4,
+    "explained_variance_ratio": [
+      0.129,
+      0.0886,
+      0.0598,
+      0.0541
+    ],
+    "total_explained_variance": 0.3315
+  },
+  "models": {
+    "quantum_vqc": {
+      "name": "Variational Quantum Classifier (VQC)",
+      "type": "Quantum AI",
+      "framework": "PennyLane",
+      "qubits": 4,
+      "circuit_layers": 2,
+      "ansatz": "Strongly Entangling Layers (Ry, Rz, CNOT)",
+      "observable": "PauliZ(0)",
+      "parameters": 18,
+      "training_time_seconds": 232.25,
+      "inference_latency_ms": 2.6,
+      "metrics": {
+        "accuracy": 0.8333,
+        "precision": 0.8929,
+        "recall": 0.7576,
+        "specificity": 0.9091,
+        "f1_score": 0.8197,
+        "roc_auc": 0.8972,
+        "confusion_matrix": {
+          "tp": 25,
+          "fp": 3,
+          "tn": 30,
+          "fn": 8
+        },
+        "roc_curve": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0,
+            "tpr": 0.0303
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.697
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.7273
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.7576
+          },
+          {
+            "fpr": 0.0909,
+            "tpr": 0.8182
+          },
+          {
+            "fpr": 0.2121,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.4242,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.4848,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.7273,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.8485,
+            "tpr": 0.9697
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      }
+    },
+    "svm_rbf": {
+      "name": "Support Vector Machine (RBF Kernel)",
+      "type": "Classical AI",
+      "framework": "Scikit-Learn",
+      "parameters": 504,
+      "training_time_seconds": 0.0885,
+      "inference_latency_ms": 1.099,
+      "metrics": {
+        "accuracy": 0.8333,
+        "precision": 0.8929,
+        "recall": 0.7576,
+        "specificity": 0.9091,
+        "f1_score": 0.8197,
+        "roc_auc": 0.91,
+        "confusion_matrix": {
+          "tp": 25,
+          "fp": 3,
+          "tn": 30,
+          "fn": 8
+        },
+        "roc_curve": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0,
+            "tpr": 0.0303
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.6061
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.7273
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.7576
+          },
+          {
+            "fpr": 0.2121,
+            "tpr": 0.7576
+          },
+          {
+            "fpr": 0.3333,
+            "tpr": 0.8788
+          },
+          {
+            "fpr": 0.3333,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.3939,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.5152,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.697,
+            "tpr": 0.9697
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      }
+    },
+    "svm_linear": {
+      "name": "Support Vector Machine (Linear Kernel)",
+      "type": "Classical AI",
+      "framework": "Scikit-Learn",
+      "parameters": 5,
+      "training_time_seconds": 0.0885,
+      "inference_latency_ms": 0.989,
+      "metrics": {
+        "accuracy": 0.8788,
+        "precision": 0.963,
+        "recall": 0.7879,
+        "specificity": 0.9697,
+        "f1_score": 0.8667,
+        "roc_auc": 0.9284,
+        "confusion_matrix": {
+          "tp": 26,
+          "fp": 1,
+          "tn": 32,
+          "fn": 7
+        },
+        "roc_curve": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0,
+            "tpr": 0.0303
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.6061
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.7879
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.303,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.3636,
+            "tpr": 0.8788
+          },
+          {
+            "fpr": 0.3636,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.3939,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.4545,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.5455,
+            "tpr": 0.9697
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      }
+    },
+    "logistic_regression": {
+      "name": "Logistic Regression Baseline",
+      "type": "Classical AI",
+      "framework": "Scikit-Learn",
+      "parameters": 5,
+      "training_time_seconds": 0.0885,
+      "inference_latency_ms": 0.77,
+      "metrics": {
+        "accuracy": 0.8788,
+        "precision": 0.963,
+        "recall": 0.7879,
+        "specificity": 0.9697,
+        "f1_score": 0.8667,
+        "roc_auc": 0.9256,
+        "confusion_matrix": {
+          "tp": 26,
+          "fp": 1,
+          "tn": 32,
+          "fn": 7
+        },
+        "roc_curve": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0,
+            "tpr": 0.0303
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.6667
+          },
+          {
+            "fpr": 0.0303,
+            "tpr": 0.8182
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.303,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.3939,
+            "tpr": 0.8788
+          },
+          {
+            "fpr": 0.3939,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.4242,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.4848,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 0.6364,
+            "tpr": 0.9697
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      }
+    },
+    "mlp": {
+      "name": "Multi-Layer Perceptron (MLP 4-16-8-1)",
+      "type": "Classical AI",
+      "framework": "Scikit-Learn",
+      "parameters": 225,
+      "training_time_seconds": 0.1769,
+      "inference_latency_ms": 1.209,
+      "metrics": {
+        "accuracy": 0.8636,
+        "precision": 0.9286,
+        "recall": 0.7879,
+        "specificity": 0.9394,
+        "f1_score": 0.8525,
+        "roc_auc": 0.9311,
+        "confusion_matrix": {
+          "tp": 26,
+          "fp": 2,
+          "tn": 31,
+          "fn": 7
+        },
+        "roc_curve": [
+          {
+            "fpr": 0.0,
+            "tpr": 0.0
+          },
+          {
+            "fpr": 0.0,
+            "tpr": 0.0303
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.7576
+          },
+          {
+            "fpr": 0.0606,
+            "tpr": 0.7879
+          },
+          {
+            "fpr": 0.0909,
+            "tpr": 0.8182
+          },
+          {
+            "fpr": 0.1818,
+            "tpr": 0.8182
+          },
+          {
+            "fpr": 0.2727,
+            "tpr": 0.8485
+          },
+          {
+            "fpr": 0.2727,
+            "tpr": 0.8788
+          },
+          {
+            "fpr": 0.303,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.3939,
+            "tpr": 0.9091
+          },
+          {
+            "fpr": 0.4848,
+            "tpr": 0.9394
+          },
+          {
+            "fpr": 1.0,
+            "tpr": 1.0
+          }
+        ]
+      }
+    }
+  },
+  "training_history": {
+    "train_loss": [
+      0.663,
+      0.6166,
+      0.5738,
+      0.5205,
+      0.471,
+      0.4432,
+      0.4206,
+      0.4108,
+      0.4043,
+      0.4026,
+      0.4002,
+      0.3901,
+      0.3866,
+      0.3847,
+      0.3797
+    ],
+    "val_loss": [
+      0.6013,
+      0.5606,
+      0.5102,
+      0.4697,
+      0.4487,
+      0.4402,
+      0.4303,
+      0.4203,
+      0.4169,
+      0.4126,
+      0.4106,
+      0.4009,
+      0.3793,
+      0.3771,
+      0.3856
+    ],
+    "val_acc": [
+      0.6719,
+      0.7344,
+      0.7969,
+      0.8125,
+      0.7969,
+      0.7969,
+      0.7656,
+      0.7969,
+      0.7969,
+      0.7656,
+      0.7969,
+      0.7812,
+      0.8125,
+      0.8125,
+      0.8125
+    ]
+  },
+  "multidisease": {
+    "dataset_name": "NIH ChestX-ray14 (Benchmark Subset)",
+    "target_findings": [
+      "Infiltration",
+      "Effusion",
+      "Atelectasis",
+      "Pneumothorax",
+      "Pneumonia",
+      "Cardiomegaly",
+      "Consolidation",
+      "No Finding"
+    ],
+    "sample_split": {
+      "train": 35,
+      "test": 15,
+      "total": 50
+    },
+    "quantum_vqc": {
+      "model_name": "Multi-Observable Variational Quantum Classifier",
+      "n_qubits": 4,
+      "n_layers": 2,
+      "observable_count": 4,
+      "hamming_loss": 0.15,
+      "subset_accuracy": 0.3333,
+      "macro_f1": 0.1476,
+      "micro_f1": 0.4375,
+      "macro_roc_auc": 0.812,
+      "micro_roc_auc": 0.8102,
+      "inference_latency_ms": 2.88,
+      "per_finding": {
+        "Infiltration": {
+          "test_positive_count": 4,
+          "f1_score": 0.3333,
+          "mean_confidence": 0.4252
+        },
+        "Effusion": {
+          "test_positive_count": 1,
+          "f1_score": 0.2222,
+          "mean_confidence": 0.4901
+        },
+        "Atelectasis": {
+          "test_positive_count": 0,
+          "f1_score": 0.0,
+          "mean_confidence": 0.3404
+        },
+        "Pneumothorax": {
+          "test_positive_count": 1,
+          "f1_score": 0.0,
+          "mean_confidence": 0.2097
+        },
+        "Pneumonia": {
+          "test_positive_count": 0,
+          "f1_score": 0.0,
+          "mean_confidence": 0.212
+        },
+        "Cardiomegaly": {
+          "test_positive_count": 0,
+          "f1_score": 0.0,
+          "mean_confidence": 0.3235
+        },
+        "Consolidation": {
+          "test_positive_count": 0,
+          "f1_score": 0.0,
+          "mean_confidence": 0.2982
+        },
+        "No Finding": {
+          "test_positive_count": 9,
+          "f1_score": 0.625,
+          "mean_confidence": 0.5091
+        }
+      }
+    },
+    "classical_baselines": {
+      "logistic_regression": {
+        "hamming_loss": 0.1,
+        "subset_accuracy": 0.2667,
+        "macro_f1": 0.0625
+      },
+      "mlp": {
+        "hamming_loss": 0.1167,
+        "subset_accuracy": 0.3333,
+        "macro_f1": 0.0625
+      }
+    }
+  }
+}
