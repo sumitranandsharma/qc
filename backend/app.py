@@ -12,6 +12,9 @@ from fastapi.responses import JSONResponse, FileResponse
 import torch
 import numpy as np
 
+# Limit PyTorch to 1 CPU thread to minimize memory on 512MB environments
+torch.set_num_threads(1)
+
 # Dynamic paths for local and cloud deployment (e.g., Render, Docker)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -35,8 +38,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize pipeline
-pipeline = DiagnosticPipeline()
+# Lazy Pipeline Singleton to prevent OOM on startup
+_pipeline_instance = None
+
+def get_pipeline():
+    global _pipeline_instance
+    if _pipeline_instance is None:
+        print("[App] Lazy-loading Diagnostic Pipeline...")
+        _pipeline_instance = DiagnosticPipeline()
+    return _pipeline_instance
 
 CACHE_PATH = os.path.join(BASE_DIR, "data", "metrics_cache.json")
 SAMPLES_DIR = os.path.join(BASE_DIR, "data", "samples")
@@ -44,19 +54,20 @@ MULTIDISEASE_SHOWCASE_PATH = os.path.join(BASE_DIR, "data", "samples", "multidis
 
 @app.get("/api/health")
 def health_check():
+    is_ready = _pipeline_instance is not None
     return {
         "status": "online",
         "version": "2.0.0",
-        "device": str(pipeline.device),
+        "device": "cpu" if not is_ready else str(_pipeline_instance.device),
         "qubit_count": 4,
         "circuit_layers": 2,
         "models_loaded": {
-            "cnn_extractor": pipeline.extractor is not None,
-            "pca_reducer": pipeline.pca_reducer is not None,
-            "quantum_vqc_baseline": pipeline.vqc is not None,
-            "classical_baselines": pipeline.baselines is not None,
-            "quantum_vqc_multidisease": pipeline.multidisease_vqc is not None,
-            "classical_multidisease": pipeline.multidisease_baselines is not None
+            "cnn_extractor": is_ready and _pipeline_instance.extractor is not None,
+            "pca_reducer": is_ready and _pipeline_instance.pca_reducer is not None,
+            "quantum_vqc_baseline": is_ready and _pipeline_instance.vqc is not None,
+            "classical_baselines": is_ready and _pipeline_instance.baselines is not None,
+            "quantum_vqc_multidisease": is_ready and _pipeline_instance.multidisease_vqc is not None,
+            "classical_multidisease": is_ready and _pipeline_instance.multidisease_baselines is not None
         },
         "active_modality": "chest_xray",
         "supported_modes": ["multi_disease", "baseline"]
@@ -253,6 +264,7 @@ async def analyze_scan(
         source_name = file.filename
 
     try:
+        pipeline = get_pipeline()
         result = pipeline.analyze_image(pil_image, mode=mode)
         result["source_info"] = {
             "source_name": source_name,
@@ -271,6 +283,7 @@ def get_circuit_details(mode: str = Query("multi_disease")):
     """
     Returns circuit architecture, ASCII diagram, and gate metadata.
     """
+    pipeline = get_pipeline()
     if mode == "multi_disease":
         if pipeline.multidisease_vqc is not None:
             return pipeline.multidisease_vqc.get_circuit_details()

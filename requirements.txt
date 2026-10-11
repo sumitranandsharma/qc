@@ -1,3 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
 fastapi
 uvicorn[standard]
 python-multipart
@@ -7,6 +10,4 @@ joblib
 Pillow
 numpy
 opencv-python-headless
-torch
-torchvision
 requests
