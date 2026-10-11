@@ -1,3 +1,4 @@
+import os
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
@@ -8,11 +9,24 @@ import io
 import base64
 
 class FeatureExtractor:
-    def __init__(self, device=None):
+    def __init__(self, device=None, weights_path=None):
         self.device = device or torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        weights = models.ResNet18_Weights.DEFAULT
-        self.base_model = models.resnet18(weights=weights)
-        # Move full base model to self.device for Grad-CAM
+        
+        # Check for pre-bundled local weights to eliminate runtime internet downloads
+        if weights_path is None:
+            models_dir = os.path.dirname(os.path.abspath(__file__))
+            backend_dir = os.path.dirname(models_dir)
+            weights_path = os.path.join(backend_dir, "data", "weights", "resnet18.pth")
+
+        if os.path.exists(weights_path):
+            self.base_model = models.resnet18(weights=None)
+            state_dict = torch.load(weights_path, map_location=self.device, weights_only=True)
+            self.base_model.load_state_dict(state_dict)
+            print(f"[FeatureExtractor] Loaded bundled offline weights from {weights_path}")
+        else:
+            weights = models.ResNet18_Weights.DEFAULT
+            self.base_model = models.resnet18(weights=weights)
+
         self.base_model.to(self.device)
         self.base_model.eval()
         

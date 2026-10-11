@@ -1,9 +1,15 @@
 import os
+os.environ["MALLOC_ARENA_MAX"] = "2"
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["MKL_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+
 import sys
 import io
 import glob
 import json
 import base64
+import gc
 from PIL import Image
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,8 +18,9 @@ from fastapi.responses import JSONResponse, FileResponse
 import torch
 import numpy as np
 
-# Limit PyTorch to 1 CPU thread to minimize memory on 512MB environments
+# Limit PyTorch to 1 CPU thread & disable autograd to minimize memory on 512MB environments
 torch.set_num_threads(1)
+torch.set_grad_enabled(False)
 
 # Dynamic paths for local and cloud deployment (e.g., Render, Docker)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -227,6 +234,8 @@ async def analyze_scan(
         contents = await file.read()
         try:
             pil_image = Image.open(io.BytesIO(contents)).convert("RGB")
+            # Downsample to maximum 512x512 to prevent giant bitmap allocations
+            pil_image.thumbnail((512, 512), Image.Resampling.BILINEAR)
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Invalid image file: {str(e)}")
     elif sample_id:
@@ -237,6 +246,7 @@ async def analyze_scan(
             raise HTTPException(status_code=404, detail=f"Sample '{sample_id}' not found.")
         try:
             pil_image = Image.open(sample_path).convert("RGB")
+            pil_image.thumbnail((512, 512), Image.Resampling.BILINEAR)
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to open sample: {str(e)}")
     else:
@@ -277,6 +287,8 @@ async def analyze_scan(
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=f"Pipeline error: {str(e)}")
+    finally:
+        gc.collect()
 
 @app.get("/api/circuit")
 def get_circuit_details(mode: str = Query("multi_disease")):
