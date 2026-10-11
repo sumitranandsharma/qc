@@ -8,7 +8,9 @@ import numpy as np
 import torch
 
 # Ensure paths
-sys.path.append(os.path.abspath("C:/SAH/backend"))
+BASE_BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_BACKEND_DIR not in sys.path:
+    sys.path.append(BASE_BACKEND_DIR)
 
 from models.cnn_extractor import FeatureExtractor
 from models.pca_reducer import PCAReducer
@@ -16,7 +18,9 @@ from models.quantum_vqc import QuantumVQC, MultiDiseaseQuantumVQC, DEFAULT_FINDI
 from models.classical_baselines import ClassicalBaselines, MultiDiseaseClassicalBaselines
 
 class DiagnosticPipeline:
-    def __init__(self, weights_dir="C:/SAH/backend/data/weights"):
+    def __init__(self, weights_dir=None):
+        if weights_dir is None:
+            weights_dir = os.path.join(BASE_BACKEND_DIR, "data", "weights")
         self.weights_dir = weights_dir
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         print(f"[Pipeline] Initializing Diagnostic Pipeline on {self.device}...")

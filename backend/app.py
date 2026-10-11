@@ -12,8 +12,11 @@ from fastapi.responses import JSONResponse, FileResponse
 import torch
 import numpy as np
 
-# Ensure sys.path includes backend
-sys.path.append(os.path.abspath("C:/SAH/backend"))
+# Dynamic paths for local and cloud deployment (e.g., Render, Docker)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+if BASE_DIR not in sys.path:
+    sys.path.append(BASE_DIR)
 
 from services.pipeline import DiagnosticPipeline
 
@@ -35,9 +38,9 @@ app.add_middleware(
 # Initialize pipeline
 pipeline = DiagnosticPipeline()
 
-CACHE_PATH = "C:/SAH/backend/data/metrics_cache.json"
-SAMPLES_DIR = "C:/SAH/backend/data/samples"
-MULTIDISEASE_SHOWCASE_PATH = "C:/SAH/backend/data/samples/multidisease_showcase.json"
+CACHE_PATH = os.path.join(BASE_DIR, "data", "metrics_cache.json")
+SAMPLES_DIR = os.path.join(BASE_DIR, "data", "samples")
+MULTIDISEASE_SHOWCASE_PATH = os.path.join(BASE_DIR, "data", "samples", "multidisease_showcase.json")
 
 @app.get("/api/health")
 def health_check():
@@ -294,7 +297,7 @@ def get_benchmarks():
     return data
 
 # Mount static frontend
-frontend_dir = os.path.abspath("C:/SAH/frontend")
+frontend_dir = os.path.join(ROOT_DIR, "frontend")
 if os.path.exists(frontend_dir):
     app.mount("/static", StaticFiles(directory=frontend_dir), name="static")
 
